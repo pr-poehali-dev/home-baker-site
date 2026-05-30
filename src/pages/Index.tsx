@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import Icon from "@/components/ui/icon";
 
+const SEND_ORDER_URL = "https://functions.poehali.dev/f47aa538-6177-45be-bd41-b1def2320d36";
+
 const CAKE_IMG = "https://cdn.poehali.dev/projects/33eeff40-f669-4396-8f27-0b3f462ae2d4/files/105a14a4-eb3b-44b3-a64c-b5e5de9846e3.jpg";
 const BENTO_IMG = "https://cdn.poehali.dev/projects/33eeff40-f669-4396-8f27-0b3f462ae2d4/files/adf20735-6f13-49f4-b2c3-cb82091fd189.jpg";
 const CUPCAKE_IMG = "https://cdn.poehali.dev/projects/33eeff40-f669-4396-8f27-0b3f462ae2d4/files/22454102-3497-45f4-8ef3-6f81a602d919.jpg";
@@ -145,6 +147,34 @@ const FILTERS = ["Все", "Торты", "Бенто", "Капкейки"];
 export default function Index() {
   const [activeFilter, setActiveFilter] = useState("Все");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const [formName, setFormName] = useState("");
+  const [formPhone, setFormPhone] = useState("");
+  const [formMessage, setFormMessage] = useState("");
+  const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formName.trim() || !formPhone.trim()) return;
+    setFormStatus("loading");
+    try {
+      const res = await fetch(SEND_ORDER_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: formName, phone: formPhone, message: formMessage }),
+      });
+      if (res.ok) {
+        setFormStatus("success");
+        setFormName("");
+        setFormPhone("");
+        setFormMessage("");
+      } else {
+        setFormStatus("error");
+      }
+    } catch {
+      setFormStatus("error");
+    }
+  };
 
   const filtered = activeFilter === "Все"
     ? portfolio
@@ -578,39 +608,70 @@ export default function Index() {
             <RevealSection>
               <div className="bg-white rounded-3xl p-8 shadow-md border border-border/50">
                 <h3 className="font-display text-2xl font-medium mb-6">Оставить заявку</h3>
-                <form className="flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
-                  <div>
-                    <label className="block text-sm font-body font-medium text-foreground/70 mb-1.5">Ваше имя</label>
-                    <input
-                      type="text"
-                      placeholder="Мария"
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-background font-body text-sm focus:outline-none focus:border-rose focus:ring-2 focus:ring-rose/20 transition-all"
-                    />
+
+                {formStatus === "success" ? (
+                  <div className="flex flex-col items-center justify-center gap-4 py-10 text-center">
+                    <span className="text-5xl">🎂</span>
+                    <h4 className="font-display text-2xl font-medium text-rose">Заявка отправлена!</h4>
+                    <p className="font-body text-foreground/60 text-sm leading-relaxed">
+                      Анастасия получила ваше сообщение и свяжется с вами в ближайшее время.
+                    </p>
+                    <button
+                      onClick={() => setFormStatus("idle")}
+                      className="mt-2 px-5 py-2 rounded-full border border-rose text-rose text-sm font-body font-medium hover:bg-rose hover:text-white transition-all"
+                    >
+                      Отправить ещё
+                    </button>
                   </div>
-                  <div>
-                    <label className="block text-sm font-body font-medium text-foreground/70 mb-1.5">Телефон или мессенджер</label>
-                    <input
-                      type="text"
-                      placeholder="+7 (999) 000-00-00"
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-background font-body text-sm focus:outline-none focus:border-rose focus:ring-2 focus:ring-rose/20 transition-all"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-body font-medium text-foreground/70 mb-1.5">Повод и пожелания</label>
-                    <textarea
-                      placeholder="Свадьба на 50 человек, торт 3 яруса с живыми цветами..."
-                      rows={4}
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-background font-body text-sm focus:outline-none focus:border-rose focus:ring-2 focus:ring-rose/20 transition-all resize-none"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full py-3.5 rounded-xl gradient-rose text-white font-semibold font-body shadow-md hover:shadow-lg hover:opacity-90 transition-all duration-300 flex items-center justify-center gap-2"
-                  >
-                    <Icon name="Send" size={18} />
-                    Отправить заявку
-                  </button>
-                </form>
+                ) : (
+                  <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+                    <div>
+                      <label className="block text-sm font-body font-medium text-foreground/70 mb-1.5">Ваше имя *</label>
+                      <input
+                        type="text"
+                        placeholder="Мария"
+                        value={formName}
+                        onChange={(e) => setFormName(e.target.value)}
+                        required
+                        className="w-full px-4 py-3 rounded-xl border border-border bg-background font-body text-sm focus:outline-none focus:border-rose focus:ring-2 focus:ring-rose/20 transition-all"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-body font-medium text-foreground/70 mb-1.5">Телефон или мессенджер *</label>
+                      <input
+                        type="text"
+                        placeholder="+7 (999) 000-00-00"
+                        value={formPhone}
+                        onChange={(e) => setFormPhone(e.target.value)}
+                        required
+                        className="w-full px-4 py-3 rounded-xl border border-border bg-background font-body text-sm focus:outline-none focus:border-rose focus:ring-2 focus:ring-rose/20 transition-all"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-body font-medium text-foreground/70 mb-1.5">Повод и пожелания</label>
+                      <textarea
+                        placeholder="Свадьба на 50 человек, торт 3 яруса с живыми цветами..."
+                        rows={4}
+                        value={formMessage}
+                        onChange={(e) => setFormMessage(e.target.value)}
+                        className="w-full px-4 py-3 rounded-xl border border-border bg-background font-body text-sm focus:outline-none focus:border-rose focus:ring-2 focus:ring-rose/20 transition-all resize-none"
+                      />
+                    </div>
+                    {formStatus === "error" && (
+                      <p className="text-sm text-destructive font-body">
+                        Не удалось отправить заявку. Попробуйте ещё раз или напишите в Telegram.
+                      </p>
+                    )}
+                    <button
+                      type="submit"
+                      disabled={formStatus === "loading"}
+                      className="w-full py-3.5 rounded-xl gradient-rose text-white font-semibold font-body shadow-md hover:shadow-lg hover:opacity-90 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                    >
+                      <Icon name={formStatus === "loading" ? "Loader" : "Send"} size={18} className={formStatus === "loading" ? "animate-spin" : ""} />
+                      {formStatus === "loading" ? "Отправляем..." : "Отправить заявку"}
+                    </button>
+                  </form>
+                )}
               </div>
             </RevealSection>
 
