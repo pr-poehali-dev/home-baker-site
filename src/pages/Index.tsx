@@ -176,10 +176,12 @@ export default function Index() {
             ))}
           </ul>
           <a
-            href="#contacts"
+            href="https://t.me/nesti_chek"
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-full gradient-rose text-white text-sm font-semibold shadow-md hover:shadow-lg hover:opacity-90 transition-all duration-300"
           >
-            <Icon name="Phone" size={14} />
+            <Icon name="Send" size={14} />
             Заказать торт
           </a>
           <button
@@ -202,7 +204,9 @@ export default function Index() {
               </a>
             ))}
             <a
-              href="#contacts"
+              href="https://t.me/nesti_chek"
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-2 text-center px-5 py-2.5 rounded-full gradient-rose text-white text-sm font-semibold"
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -248,11 +252,13 @@ export default function Index() {
                 Смотреть работы
               </a>
               <a
-                href="#contacts"
+                href="https://t.me/nesti_chek"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-7 py-3.5 rounded-full border-2 border-rose text-rose font-semibold hover:bg-rose hover:text-white transition-all duration-300 flex items-center gap-2"
               >
-                <Icon name="MessageCircle" size={18} />
-                Написать
+                <Icon name="Send" size={18} />
+                Написать в Telegram
               </a>
             </div>
             <div className="flex gap-8 mt-10 animate-fade-in-up delay-400">
@@ -611,20 +617,32 @@ export default function Index() {
             <RevealSection>
               <div className="flex flex-col gap-5">
                 {[
-                  { icon: "Phone", label: "Телефон", value: "+7 (999) 000-00-00", bg: "bg-rose-light", fg: "text-rose" },
-                  { icon: "MessageCircle", label: "Telegram / WhatsApp", value: "@anastasia_cake", bg: "bg-blush", fg: "text-rose" },
-                  { icon: "Camera", label: "Instagram", value: "@nastya.cakes", bg: "bg-cream", fg: "text-chocolate" },
-                  { icon: "MapPin", label: "Город", value: "Москва и область", bg: "bg-secondary", fg: "text-foreground" },
+                  { icon: "Phone", label: "Телефон", value: "+7 (951) 880-45-17", bg: "bg-rose-light", fg: "text-rose", href: "tel:+79518804517" },
+                  { icon: "Send", label: "Telegram", value: "@nesti_chek", bg: "bg-blush", fg: "text-rose", href: "https://t.me/nesti_chek" },
+                  { icon: "Users", label: "ВКонтакте", value: "vk.ru/nesti_cake", bg: "bg-cream", fg: "text-chocolate", href: "https://vk.ru/nesti_cake" },
+                  { icon: "MapPin", label: "Город", value: "Саратов", bg: "bg-secondary", fg: "text-foreground", href: null },
                 ].map((contact, i) => (
-                  <div key={i} className="flex items-center gap-4 bg-white rounded-2xl p-5 border border-border/50 shadow-sm hover-scale">
-                    <div className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 ${contact.bg} ${contact.fg}`}>
-                      <Icon name={contact.icon} size={20} />
+                  contact.href ? (
+                    <a key={i} href={contact.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-white rounded-2xl p-5 border border-border/50 shadow-sm hover-scale">
+                      <div className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 ${contact.bg} ${contact.fg}`}>
+                        <Icon name={contact.icon} size={20} />
+                      </div>
+                      <div>
+                        <div className="text-xs font-body text-foreground/40 mb-0.5">{contact.label}</div>
+                        <div className="font-body font-semibold text-sm">{contact.value}</div>
+                      </div>
+                    </a>
+                  ) : (
+                    <div key={i} className="flex items-center gap-4 bg-white rounded-2xl p-5 border border-border/50 shadow-sm">
+                      <div className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 ${contact.bg} ${contact.fg}`}>
+                        <Icon name={contact.icon} size={20} />
+                      </div>
+                      <div>
+                        <div className="text-xs font-body text-foreground/40 mb-0.5">{contact.label}</div>
+                        <div className="font-body font-semibold text-sm">{contact.value}</div>
+                      </div>
                     </div>
-                    <div>
-                      <div className="text-xs font-body text-foreground/40 mb-0.5">{contact.label}</div>
-                      <div className="font-body font-semibold text-sm">{contact.value}</div>
-                    </div>
-                  </div>
+                  )
                 ))}
                 <div className="bg-white rounded-2xl p-5 border border-border/50 shadow-sm">
                   <div className="flex items-center gap-2 mb-3">
