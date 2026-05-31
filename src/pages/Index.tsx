@@ -334,7 +334,7 @@ export default function Index() {
               </div>
               <div className="w-72 h-72 md:w-96 md:h-96 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
                 <img
-                  src={CAKE_IMG}
+                  src={CAKE_IMG_1}
                   alt="Торт Анастасии"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
