@@ -68,10 +68,10 @@ const processSteps = [
 const reviews = [
   {
     name: "Мария К.",
-    occasion: "Свадьба",
-    text: "Анастасия создала торт нашей мечты! Трёхъярусный с живыми цветами — все гости были в восторге. Вкус просто невероятный, нежный ванильный бисквит с малиновым конфи.",
+    occasion: "Юбилей",
+    text: "Анастасия создала торт нашей мечты! С живыми цветами — все гости были в восторге. Вкус просто невероятный, нежный ванильный бисквит с малиновым конфи.",
     stars: 5,
-    avatar: "👰",
+    avatar: "🎉",
   },
   {
     name: "Алексей П.",
@@ -108,8 +108,8 @@ const blogPosts = [
     icon: "Lightbulb",
     date: "3 мая 2025",
     tag: "Советы",
-    title: "Как выбрать торт для свадьбы: полный гид",
-    preview: "Количество ярусов, вкусовые сочетания, сезонный декор — всё, что нужно знать парам при заказе свадебного торта.",
+    title: "Как выбрать торт на день рождения: полный гид",
+    preview: "Количество ярусов, вкусовые сочетания, сезонный декор — всё, что нужно знать при заказе торта.",
   },
   {
     icon: "Sparkles",
@@ -278,7 +278,7 @@ export default function Index() {
               <span className="text-gradient font-semibold italic">запоминаются</span>
             </h1>
             <p className="font-body text-lg text-foreground/60 mb-8 max-w-md leading-relaxed animate-fade-in-up delay-200">
-              Домашний кондитер Анастасия создаёт торты для свадеб, дней рождения и любых праздников. Бенто-торты, капкейки — каждый с любовью.
+              Домашний кондитер Анастасия создаёт торты для дней рождения, детских праздников и любых поводов. Бенто-торты, капкейки — каждый с любовью.
             </p>
             <div className="flex flex-wrap gap-4 animate-fade-in-up delay-300">
               <a
@@ -328,13 +328,13 @@ export default function Index() {
                   <span className="text-2xl">🎂</span>
                   <div>
                     <div className="text-xs text-foreground/50 font-body">Торт дня</div>
-                    <div className="font-display text-sm font-semibold">Свадебный</div>
+                    <div className="font-display text-sm font-semibold">На день рождения</div>
                   </div>
                 </div>
               </div>
               <div className="w-72 h-72 md:w-96 md:h-96 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
                 <img
-                  src={CAKE_IMG_1}
+                  src={CAKE_IMG_3}
                   alt="Торт Анастасии"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
@@ -357,7 +357,7 @@ export default function Index() {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
-                { emoji: "🎂", title: "Торты на заказ", desc: "Свадебные, детские, корпоративные — любой сложности", color: "bg-rose-light" },
+                { emoji: "🎂", title: "Торты на заказ", desc: "Детские, корпоративные, на любой повод — любой сложности", color: "bg-rose-light" },
                 { emoji: "🍰", title: "Бенто-торты", desc: "Маленькие торты с большим смыслом — идеальный подарок", color: "bg-cream" },
                 { emoji: "🧁", title: "Капкейки", desc: "Наборы от 6 штук с любым декором и начинкой", color: "bg-blush" },
               ].map((cat, i) => (
