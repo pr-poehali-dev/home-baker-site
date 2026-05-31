@@ -103,6 +103,7 @@ const blogPosts = [
     tag: "Рецепты",
     title: "Идеальный бисквит: 5 секретов пышного коржа",
     preview: "Делюсь проверенными техниками, которые использую в каждом торте. Почему температура яиц важнее, чем вы думаете...",
+    full: "1. Яйца комнатной температуры. Достаньте их из холодильника за 1–2 часа — они лучше взбиваются и дают стабильную пену.\n\n2. Просеивайте муку дважды. Это насыщает её кислородом и делает тесто воздушным.\n\n3. Не открывайте духовку первые 20 минут. Перепад температуры «роняет» бисквит.\n\n4. Остужайте на решётке вверх дном. Так корж не оседает под собственным весом.\n\n5. Заворачивайте в плёнку и дайте «отдохнуть» ночь в холодильнике — бисквит станет сочнее и легче режется.",
   },
   {
     icon: "Lightbulb",
@@ -110,6 +111,7 @@ const blogPosts = [
     tag: "Советы",
     title: "Как выбрать торт на день рождения: полный гид",
     preview: "Количество ярусов, вкусовые сочетания, сезонный декор — всё, что нужно знать при заказе торта.",
+    full: "Выбирая торт, начните с количества гостей: на 10–15 человек хватит 1,5–2 кг, на 20–30 — от 3 кг.\n\nПо вкусу: самые популярные начинки — малиновый конфи с ванильным кремом, карамель с орехами, шоколад с вишней. Если именинник не любит сладкое — попробуйте лёгкий йогуртовый крем с ягодами.\n\nПо декору: обсудите с кондитером цветовую гамму и тему праздника заранее — минимум за 5–7 дней. Чем сложнее декор, тем больше времени на подготовку.\n\nЗаказывайте с запасом по времени — хороший торт требует минимум 2–3 дня.",
   },
   {
     icon: "Sparkles",
@@ -117,6 +119,7 @@ const blogPosts = [
     tag: "Тренды",
     title: "Бенто-торты: почему весь мир сошёл с ума",
     preview: "История этого маленького чуда из Кореи, как его делают и почему он идеально подходит для личных подарков.",
+    full: "Бенто-торт пришёл из Южной Кореи около 2020 года. Его особенность — маленький размер (обычно на 1–2 персоны) и авторская надпись или рисунок прямо на кремовой поверхности.\n\nПочему это идеальный подарок? Он личный — можно написать именно то, что хочется сказать. Он компактный — удобно везти и хранить. Он вкусный — несмотря на размер, внутри полноценный бисквит с начинкой.\n\nУ меня бенто можно заказать с любой надписью, рисунком и в любом цвете крема. Срок изготовления — 1–2 дня.",
   },
 ];
 
@@ -154,6 +157,7 @@ const FILTERS = ["Все", "Торты", "Бенто", "Капкейки"];
 export default function Index() {
   const [activeFilter, setActiveFilter] = useState("Все");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [expandedPost, setExpandedPost] = useState<number | null>(null);
 
   const [formName, setFormName] = useState("");
   const [formPhone, setFormPhone] = useState("");
@@ -568,7 +572,7 @@ export default function Index() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {blogPosts.map((post, i) => (
               <RevealSection key={i}>
-                <article className="group bg-background rounded-3xl p-8 border border-border/50 card-hover cursor-pointer">
+                <article className="group bg-background rounded-3xl p-8 border border-border/50 card-hover cursor-pointer" onClick={() => setExpandedPost(expandedPost === i ? null : i)}>
                   <div className="w-12 h-12 rounded-2xl bg-rose-light flex items-center justify-center mb-5">
                     <Icon name={post.icon} size={22} className="text-rose" />
                   </div>
@@ -582,9 +586,16 @@ export default function Index() {
                     {post.title}
                   </h3>
                   <p className="font-body text-sm text-foreground/60 leading-relaxed mb-5">{post.preview}</p>
+                  {expandedPost === i && (
+                    <div className="mb-5 pt-4 border-t border-border/40">
+                      {post.full.split("\n\n").map((para, j) => (
+                        <p key={j} className="font-body text-sm text-foreground/70 leading-relaxed mb-3">{para}</p>
+                      ))}
+                    </div>
+                  )}
                   <div className="flex items-center gap-2 text-rose font-semibold font-body text-sm">
-                    <span>Читать далее</span>
-                    <Icon name="ArrowRight" size={16} className="group-hover:translate-x-1 transition-transform" />
+                    <span>{expandedPost === i ? "Свернуть" : "Читать далее"}</span>
+                    <Icon name={expandedPost === i ? "ChevronUp" : "ArrowRight"} size={16} className="group-hover:translate-x-1 transition-transform" />
                   </div>
                 </article>
               </RevealSection>
