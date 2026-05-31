@@ -7,6 +7,10 @@ const CAKE_IMG_1 = "https://cdn.poehali.dev/projects/33eeff40-f669-4396-8f27-0b3
 const CAKE_IMG_2 = "https://cdn.poehali.dev/projects/33eeff40-f669-4396-8f27-0b3f462ae2d4/bucket/a70f51a0-6bde-40d6-903f-5a708b946686.png";
 const CAKE_IMG_3 = "https://cdn.poehali.dev/projects/33eeff40-f669-4396-8f27-0b3f462ae2d4/bucket/4bac6fef-928b-46b7-ac63-dc0f18ddd30c.png";
 const CAKE_IMG_4 = "https://cdn.poehali.dev/projects/33eeff40-f669-4396-8f27-0b3f462ae2d4/bucket/0d195ef8-d89c-46b9-8aa4-3e05dda7e56f.png";
+const CAKE_IMG_5 = "https://cdn.poehali.dev/projects/33eeff40-f669-4396-8f27-0b3f462ae2d4/bucket/09b64d68-007e-43cb-b901-94946a719ca9.jpeg";
+const CAKE_IMG_6 = "https://cdn.poehali.dev/projects/33eeff40-f669-4396-8f27-0b3f462ae2d4/bucket/35476c76-7d46-422a-a2e7-dd2f25e8f119.jpeg";
+const CAKE_IMG_7 = "https://cdn.poehali.dev/projects/33eeff40-f669-4396-8f27-0b3f462ae2d4/bucket/87b9745a-88ee-4c1f-88b9-225ff0240ed0.jpeg";
+const BENTO_IMG_3 = "https://cdn.poehali.dev/projects/33eeff40-f669-4396-8f27-0b3f462ae2d4/bucket/9aebce8f-908c-4da3-8fad-34408d49cd81.png";
 const BENTO_IMG_1 = "https://cdn.poehali.dev/projects/33eeff40-f669-4396-8f27-0b3f462ae2d4/bucket/26f76fd8-b8d3-4656-b04b-4a956abd88ae.png";
 const BENTO_IMG_2 = "https://cdn.poehali.dev/projects/33eeff40-f669-4396-8f27-0b3f462ae2d4/bucket/fcb4ff7b-6757-4f68-8329-5412e9018e5e.png";
 const CUPCAKE_IMG_1 = "https://cdn.poehali.dev/projects/33eeff40-f669-4396-8f27-0b3f462ae2d4/bucket/4b1e93ae-b621-4043-a203-6cf0aa367c31.png";
@@ -22,14 +26,18 @@ const navItems = [
 ];
 
 const portfolio = [
-  { id: 1, img: CAKE_IMG_1, title: "Детский торт «Три кота»", category: "Торты", tag: "День рождения" },
+  { id: 1, img: CAKE_IMG_5, title: "Чёрный торт с золотой короной", category: "Торты", tag: "День рождения" },
   { id: 2, img: BENTO_IMG_1, title: "Бенто «А не бахнуть ли нам чайку?»", category: "Бенто", tag: "День рождения" },
   { id: 3, img: CUPCAKE_IMG_1, title: "Капкейки с лаймом", category: "Капкейки", tag: "Праздник" },
-  { id: 4, img: CAKE_IMG_2, title: "Торт «Синий трактор»", category: "Торты", tag: "День рождения" },
+  { id: 4, img: CAKE_IMG_6, title: "Детский торт «Минни Маус»", category: "Торты", tag: "День рождения" },
   { id: 5, img: BENTO_IMG_2, title: "Бенто «Пусть life всегда будет в кайф»", category: "Бенто", tag: "Юбилей" },
   { id: 6, img: CUPCAKE_IMG_2, title: "Капкейки с жемчугом", category: "Капкейки", tag: "Корпоратив" },
-  { id: 7, img: CAKE_IMG_3, title: "Торт с короной", category: "Торты", tag: "Юбилей" },
+  { id: 7, img: CAKE_IMG_7, title: "Торт «Корзинка» с черникой", category: "Торты", tag: "Юбилей" },
   { id: 8, img: CAKE_IMG_4, title: "Торт на 14 лет", category: "Торты", tag: "День рождения" },
+  { id: 9, img: CAKE_IMG_1, title: "Детский торт «Три кота»", category: "Торты", tag: "День рождения" },
+  { id: 10, img: CAKE_IMG_2, title: "Торт «Синий трактор»", category: "Торты", tag: "День рождения" },
+  { id: 11, img: CAKE_IMG_3, title: "Торт с короной", category: "Торты", tag: "Юбилей" },
+  { id: 12, img: BENTO_IMG_3, title: "Бенто «Мише полгодика»", category: "Бенто", tag: "День рождения" },
 ];
 
 const processSteps = [
@@ -338,7 +346,7 @@ export default function Index() {
               </div>
               <div className="w-72 h-72 md:w-96 md:h-96 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
                 <img
-                  src={CAKE_IMG_3}
+                  src={CAKE_IMG_5}
                   alt="Торт Анастасии"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
