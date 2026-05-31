@@ -18,6 +18,7 @@ const CUPCAKE_IMG_2 = "https://cdn.poehali.dev/projects/33eeff40-f669-4396-8f27-
 
 const navItems = [
   { label: "Главная", href: "#hero" },
+  { label: "Обо мне", href: "#about" },
   { label: "Работы", href: "#portfolio" },
   { label: "Процесс", href: "#process" },
   { label: "Отзывы", href: "#reviews" },
@@ -362,6 +363,50 @@ export default function Index() {
           </div>
         </div>
       </section>
+
+      {/* ABOUT */}
+      <RevealSection>
+        <section id="about" className="py-20 bg-cream">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex flex-col md:flex-row items-center gap-12">
+                <div className="flex-shrink-0 flex flex-col items-center gap-4">
+                  <div className="w-52 h-52 rounded-full overflow-hidden border-4 border-white shadow-xl bg-blush flex items-center justify-center">
+                    <span className="text-7xl">👩‍🍳</span>
+                  </div>
+                  <div className="flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-sm">
+                    <span className="text-rose text-sm font-semibold">✦ Сертифицированный кондитер</span>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <p className="text-xs font-body uppercase tracking-widest text-rose mb-2">Знакомство</p>
+                  <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
+                    Привет! Меня зовут<br />
+                    <span className="text-rose">Анастасия ✨</span>
+                  </h2>
+                  <p className="text-foreground/70 font-body text-base leading-relaxed mb-6">
+                    Я — ваш домашний кондитер в Саратове. С любовью готовлю торты и капкейки на заказ, чтобы сделать ваши праздники ещё ярче и слаще. Для меня идеальный десерт — это не только красота, но и потрясающий, сбалансированный вкус.
+                  </p>
+                  <div className="flex flex-col gap-4">
+                    {[
+                      { icon: "Heart", text: "Путь в кондитерство начался в декрете — испекла первый торт и поняла, что нашла себя" },
+                      { icon: "Star", text: "Прошла профильное обучение и стала сертифицированным кондитером" },
+                      { icon: "Cake", text: "Создаю торты для любого повода — от уютного чаепития до большого торжества" },
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-start gap-3">
+                        <div className="w-8 h-8 rounded-full bg-rose/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <Icon name={item.icon} size={16} className="text-rose" />
+                        </div>
+                        <p className="text-foreground/70 font-body text-sm leading-relaxed">{item.text}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </RevealSection>
 
       {/* CATEGORIES */}
       <RevealSection>
