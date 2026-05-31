@@ -4,8 +4,10 @@ import Icon from "@/components/ui/icon";
 const SEND_ORDER_URL = "https://functions.poehali.dev/f47aa538-6177-45be-bd41-b1def2320d36";
 
 const CAKE_IMG = "https://cdn.poehali.dev/projects/33eeff40-f669-4396-8f27-0b3f462ae2d4/files/105a14a4-eb3b-44b3-a64c-b5e5de9846e3.jpg";
-const BENTO_IMG = "https://cdn.poehali.dev/projects/33eeff40-f669-4396-8f27-0b3f462ae2d4/files/adf20735-6f13-49f4-b2c3-cb82091fd189.jpg";
-const CUPCAKE_IMG = "https://cdn.poehali.dev/projects/33eeff40-f669-4396-8f27-0b3f462ae2d4/files/22454102-3497-45f4-8ef3-6f81a602d919.jpg";
+const BENTO_IMG_1 = "https://cdn.poehali.dev/projects/33eeff40-f669-4396-8f27-0b3f462ae2d4/bucket/26f76fd8-b8d3-4656-b04b-4a956abd88ae.png";
+const BENTO_IMG_2 = "https://cdn.poehali.dev/projects/33eeff40-f669-4396-8f27-0b3f462ae2d4/bucket/fcb4ff7b-6757-4f68-8329-5412e9018e5e.png";
+const CUPCAKE_IMG_1 = "https://cdn.poehali.dev/projects/33eeff40-f669-4396-8f27-0b3f462ae2d4/bucket/4b1e93ae-b621-4043-a203-6cf0aa367c31.png";
+const CUPCAKE_IMG_2 = "https://cdn.poehali.dev/projects/33eeff40-f669-4396-8f27-0b3f462ae2d4/bucket/61fd338d-b4e0-4f9b-8835-ab7928cac8d2.png";
 
 const navItems = [
   { label: "Главная", href: "#hero" },
@@ -18,11 +20,11 @@ const navItems = [
 
 const portfolio = [
   { id: 1, img: CAKE_IMG, title: "Свадебный торт", category: "Торты", tag: "Свадьба" },
-  { id: 2, img: BENTO_IMG, title: "Бенто-торт", category: "Бенто", tag: "День рождения" },
-  { id: 3, img: CUPCAKE_IMG, title: "Капкейки ассорти", category: "Капкейки", tag: "Праздник" },
-  { id: 4, img: CAKE_IMG, title: "Детский торт", category: "Торты", tag: "День рождения" },
-  { id: 5, img: BENTO_IMG, title: "Бенто на юбилей", category: "Бенто", tag: "Юбилей" },
-  { id: 6, img: CUPCAKE_IMG, title: "Капкейки на корпоратив", category: "Капкейки", tag: "Корпоратив" },
+  { id: 2, img: BENTO_IMG_1, title: "Бенто «А не бахнуть ли нам чайку?»", category: "Бенто", tag: "День рождения" },
+  { id: 3, img: CUPCAKE_IMG_1, title: "Капкейки с лаймом", category: "Капкейки", tag: "Праздник" },
+  { id: 4, img: BENTO_IMG_2, title: "Бенто «Пусть life всегда будет в кайф»", category: "Бенто", tag: "Юбилей" },
+  { id: 5, img: CUPCAKE_IMG_2, title: "Капкейки с жемчугом", category: "Капкейки", tag: "Корпоратив" },
+  { id: 6, img: CAKE_IMG, title: "Детский торт", category: "Торты", tag: "День рождения" },
 ];
 
 const processSteps = [
