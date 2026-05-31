@@ -730,12 +730,12 @@ export default function Index() {
                   </div>
                   <div className="space-y-1.5">
                     <div className="flex justify-between text-sm font-body">
-                      <span className="text-foreground/60">Пн – Пт</span>
-                      <span className="font-medium">9:00 – 20:00</span>
+                      <span className="text-foreground/60">Ежедневно</span>
+                      <span className="font-medium">9:00 – 21:00</span>
                     </div>
                     <div className="flex justify-between text-sm font-body">
-                      <span className="text-foreground/60">Сб – Вс</span>
-                      <span className="font-medium">10:00 – 18:00</span>
+                      <span className="text-foreground/60">Без выходных</span>
+                      <span className="font-medium text-rose">Всегда на связи</span>
                     </div>
                   </div>
                 </div>
